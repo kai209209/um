@@ -5,7 +5,8 @@ nav.navbar.navbar-inverse role="navigation"
     .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
       ul.nav.navbar-nav.navbar-right
         - if current_user
-          li = link_to current_user.name, "#"
+          li = link_to current_user.name, user_path
+          li = link_to "退出", destroy_user_session_path, method: :delete
         - else
           li = link_to "登录", new_user_session_path
           li = link_to "注册", new_user_registration_path
