@@ -9,7 +9,11 @@ class User < ApplicationRecord
     email.split("@").first
   end
 
-  def friends
+  def friends_count
     0
+  end
+
+  def friends
+    User.all
   end
 end
