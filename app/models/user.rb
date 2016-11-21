@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def name
     email.split("@").first
   end
+
+  def friends
+    0
+  end
 end

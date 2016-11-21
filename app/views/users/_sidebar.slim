@@ -1,0 +1,25 @@
+.sidebar id="sidebar"
+  .panel.profile.panel-default
+    .panel-body
+      .media
+        h1 = user.name
+      .follow-info.row.hide-ios
+        .col-xs-12.followers
+          = link_to user.friends, "#", class: "counter"
+          = link_to "我的好友", "#", class: "text"
+
+  .panel.panel-default id="user_github_repos"
+    .panel-heading More
+    .ul.list-group
+      li.list-group-item
+        .title
+          = link_to "我的好友", "#"
+          span.watchers = user.friends
+
+      li.list-group-item
+        .title
+          = link_to "查找用户", "#"
+
+      li.list-group-item
+        .title
+          = link_to "话题", "#"

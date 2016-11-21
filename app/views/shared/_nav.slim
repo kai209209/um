@@ -1,12 +1,13 @@
-nav.navbar.navbar-default role="navigation"
-  .container-fluid
-    .navbar-header
-      = link_to "Um", root_url, class: "navbar-brand"
-    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
-      ul.nav.navbar-nav.navbar-right
+header
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container
+      .navbar-header id="navbar-header"
+        = link_to "Um", root_url, class: "navbar-brand"
+      ul.nav.navbar-nav.user-bar.navbar-right
         - if current_user
           li = link_to current_user.name, user_path
           li = link_to "退出", destroy_user_session_path, method: :delete
         - else
           li = link_to "登录", new_user_session_path
           li = link_to "注册", new_user_registration_path
+
