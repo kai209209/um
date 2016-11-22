@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def friends
     User.all
   end
+
+  def self.search(params)
+    User.all
+  end
 end

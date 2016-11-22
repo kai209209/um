@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
-  def index    
+  def index
+    @users = User.search(params)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
