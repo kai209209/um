@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118073929) do
+ActiveRecord::Schema.define(version: 20161122093503) do
+
+  create_table "apply_friends", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "receiver_id"
+    t.text     "detail"
+    t.integer  "apply_status"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["author_id"], name: "index_apply_friends_on_author_id"
+    t.index ["receiver_id"], name: "index_apply_friends_on_receiver_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "sponsor_id"
+    t.integer  "receiver_id"
+    t.boolean  "status",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["receiver_id", "sponsor_id"], name: "index_friends_on_receiver_id_and_sponsor_id", unique: true
+    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
+    t.index ["sponsor_id"], name: "index_friends_on_sponsor_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
