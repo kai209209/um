@@ -16,3 +16,5 @@
             .col-sm-12
               = button_tag "提交", class: "btn btn-default"
         end
+        hr
+        = render partial: 'find_user', collection: @users
