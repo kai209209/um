@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-
+  layout 'users'
   def index
     @users = User.search(params)
     respond_to do |format|
-      format.html
       format.js
+      format.html
     end
   end
 

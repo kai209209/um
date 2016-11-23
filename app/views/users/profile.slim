@@ -1,8 +1,4 @@
-.col-md-4
-  = render "sidebar"
-
-.col-md-8
-  .panel.panel-default
-    .panel-body
-      .user-content
-        = render current_user.friends
+.panel.panel-default
+  .panel-body
+    div id="user-content"
+      = render current_user.friends

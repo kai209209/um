@@ -1,0 +1,13 @@
+h4 查找用户
+hr
+= form_tag users_path, class: "form-horizontal", role: "form", method: :get, remote: true do 
+  .form-group
+    .col-sm-12
+      = text_field_tag :email, params[:email], placeholder: "email", class: "form-control"
+      
+  .form-group
+    .col-sm-12
+      = button_tag "提交", class: "btn btn-default"
+
+hr
+= render partial: 'find_user', collection: @users

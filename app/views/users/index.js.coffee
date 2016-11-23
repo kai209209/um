@@ -1,0 +1,1 @@
+$("#user-content").html('<%= j render partial: 'search_user' %>')
