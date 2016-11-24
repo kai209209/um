@@ -10,4 +10,8 @@ class UsersController < ApplicationController
 
   def profile    
   end
+
+  def friends
+    @friends = current_user.friends
+  end
 end

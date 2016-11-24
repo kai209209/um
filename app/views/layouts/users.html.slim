@@ -12,6 +12,7 @@ html
     .main-container.container id="main"
       .row
         .col-md-4
-          = render "sidebar"
+          / = render "sidebar"
+          = yield :sidebar
         .col-md-8
           = yield

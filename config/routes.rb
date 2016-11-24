@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index,:show] do
     collection do
-      get :profile
+      get :profile, :friends
     end
   end
 
