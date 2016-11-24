@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :apply_friends
+  has_many :author_apply_friends, class_name: "ApplyFriend", foreign_key: 'author_id'
+  has_many :receiver_apply_friends, class_name: "ApplyFriend", foreign_key: 'receiver_id'
 
   def name
     email.split("@").first

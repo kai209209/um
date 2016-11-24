@@ -8,4 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :apply_friends, only: :create do 
+    collection do 
+      patch :reapply
+    end
+  end
+
 end

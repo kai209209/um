@@ -23,5 +23,6 @@
           = image_tag 'image'
 
       .modal-footer
-        = link_to "发送好友申请", "#", class: "btn btn-info btn-xs", id: "apply_user_#{find_user.id}", remote: true
+        = apply_user_friend(current_user, find_user)
+        / = link_to "发送好友申请", "#", class: "btn btn-info btn-xs", id: "apply_user_#{find_user.id}", remote: true
         button type="button" class="btn btn-default" data-dismiss="modal" Close
