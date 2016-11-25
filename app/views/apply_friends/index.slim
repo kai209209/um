@@ -1,0 +1,14 @@
+.col-md-8.col-md-offset-2
+  .panel.panel-default
+    .panel-body
+      h3 他人的申请
+      - if @apply_friends_receiver
+        table.node-topics.table
+          tbody
+            - @apply_friends_receiver.each do |apply|
+              tr.topic
+                td = apply.author.name
+                td.title = apply.id
+      - else
+        hr
+        h4 暂无申请

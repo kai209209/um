@@ -1,5 +1,10 @@
 .sidebar
   .panel.panel-default
+    .panel-heading 
+      = link_to "好友申请", apply_friends_path
+      span.pull-right.badge = current_user.friends_count
+
+  .panel.panel-default
     .panel-heading 我的好友
     .panel-group role="tablist" aria-multiselectable="true"
       .panel.panel-default

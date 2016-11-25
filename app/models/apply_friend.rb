@@ -4,5 +4,7 @@ class ApplyFriend < ApplicationRecord
 
   enum apply_status: [:apply, :pass, :reject]
 
+  scope :apply_status, -> { where(apply_status: 0) }
+
   
 end

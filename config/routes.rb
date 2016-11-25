@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :apply_friends, only: :create do 
+  resources :apply_friends, only: [:index, :create] do 
     collection do 
       patch :reapply
     end

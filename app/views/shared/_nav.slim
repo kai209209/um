@@ -5,6 +5,8 @@ header
         = link_to "Um", root_url, class: "navbar-brand"
       ul.nav.navbar-nav.user-bar.navbar-right
         - if current_user
+          li = link_to "#" do
+            span.badge 0
           li = link_to current_user.name, profile_users_path
           li = link_to "退出", destroy_user_session_path, method: :delete
         - else
