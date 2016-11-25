@@ -1,0 +1,1 @@
+$("#apply_friends_<%= @apply_friend.id %>").remove();

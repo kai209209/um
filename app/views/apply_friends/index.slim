@@ -2,13 +2,20 @@
   .panel.panel-default
     .panel-body
       h3 他人的申请
-      - if @apply_friends_receiver
-        table.node-topics.table
+      - unless @apply_friends_receiver.empty?
+        table.table.table-striped
+          thead
+            tr
+              th
+              th 操作
           tbody
             - @apply_friends_receiver.each do |apply|
-              tr.topic
+              tr id="apply_friends_#{apply.id}"
                 td = apply.author.name
-                td.title = apply.id
+                td
+                  = link_to "通过", operate_apply_apply_friends_path(apply_friend_id: apply.id, operate: "pass"), class: "btn btn-success btn-xs", remote: true
+                  | |
+                  = link_to "拒绝", operate_apply_apply_friends_path(apply_friend_id: apply.id, operate: "reject"), class: "btn btn-danger btn-xs", remote: true
       - else
         hr
         h4 暂无申请
