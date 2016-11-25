@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :author_apply_friends, class_name: "ApplyFriend", foreign_key: 'author_id'
   has_many :receiver_apply_friends, class_name: "ApplyFriend", foreign_key: 'receiver_id'
 
+  has_many :friends_relationships
+  has_many :friends,  through: :friends_relationships, source: :friend
+
   def name
     email.split("@").first
   end
@@ -15,9 +18,9 @@ class User < ApplicationRecord
     0
   end
 
-  def friends
-    User.all
-  end
+  # def friends
+  #   User.all
+  # end
 
   def self.search(params)
     users = User.where("email LIKE ?", "%#{params[:email]}%") if params[:email].present?
