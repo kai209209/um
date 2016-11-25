@@ -1,4 +1,5 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
+  mount ActionCable.server => '/cable'
   root 'static#index'
 
   devise_for :users
