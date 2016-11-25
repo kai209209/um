@@ -32,6 +32,7 @@ class ApplyFriendsController < ApplicationController
     elsif params[:operate] == "reject"
       @apply_friend.reject!
     end
+    @apply_friend.create_user_friends_relationship
     
     respond_to do |format|
       format.html

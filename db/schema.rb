@@ -23,17 +23,6 @@ ActiveRecord::Schema.define(version: 20161125072756) do
     t.index ["receiver_id"], name: "index_apply_friends_on_receiver_id"
   end
 
-  create_table "friends", force: :cascade do |t|
-    t.integer  "sponsor_id"
-    t.integer  "receiver_id"
-    t.boolean  "status",      default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["receiver_id", "sponsor_id"], name: "index_friends_on_receiver_id_and_sponsor_id", unique: true
-    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
-    t.index ["sponsor_id"], name: "index_friends_on_sponsor_id"
-  end
-
   create_table "friends_relationships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"

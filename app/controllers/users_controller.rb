@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   layout 'users'
   def index
-    @users = User.search(params)
+    @users = User.search(params, current_user)
   end
 
   def show
