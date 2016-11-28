@@ -7,9 +7,9 @@ jQuery(document).on 'turbolinks:load', ->
       disconnected: ->
 
       received: (data) ->
-        if $("#notify_apply_friend").size() > 0
+        console.log(data['apply_friend_count'])
+        if $("#notify_apply_friend").size() > 0 && data['apply_friend_count'] > 0
           $("#notify_apply_friend").text(data['apply_friend_count'])
 
         if $("#operate_apply_friend").size() > 0 && data['operate'] == "notify_apply_friend"
           $("#operate_apply_friend").append data["apply_friend"]
-
