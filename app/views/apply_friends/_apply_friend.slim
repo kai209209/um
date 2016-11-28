@@ -1,0 +1,6 @@
+tr id="apply_friends_#{apply_friend.id}"
+  td = apply_friend.author.name
+  td
+    = link_to "通过", operate_apply_apply_friends_path(apply_friend_id: apply_friend.id, operate: "pass"), class: "btn btn-success btn-xs", remote: true
+    | |
+    = link_to "拒绝", operate_apply_apply_friends_path(apply_friend_id: apply_friend.id, operate: "reject"), class: "btn btn-danger btn-xs", remote: true

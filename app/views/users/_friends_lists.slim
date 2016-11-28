@@ -2,7 +2,7 @@
   .panel.panel-default
     .panel-heading 
       = link_to "好友申请", apply_friends_path
-      span.pull-right.badge = current_user.receiver_apply_friends.apply_status.count
+      span.pull-right.badge id="notify_apply_friend" = current_user.receiver_apply_friends.apply_status.count
 
   .panel.panel-default
     .panel-heading 我的好友

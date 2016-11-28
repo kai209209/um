@@ -8,6 +8,7 @@ class ApplyFriendsController < ApplicationController
     @user = User.find params[:receiver_id]
     @apply = current_user.author_apply_friends.new(receiver: @user, apply_status: 0)
     @apply.save
+    NotifyApplyFriendJob.perform_later(@apply)
     respond_to do |format|
       format.html
       format.js
