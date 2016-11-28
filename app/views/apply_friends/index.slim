@@ -8,5 +8,4 @@
             th
             th 操作
         tbody id="operate_apply_friend"
-          - @apply_friends_receiver.each do |apply_friend|
-            = render 'apply_friend', apply_friend: apply_friend
+          = render partial: "apply_friend", collection: @apply_friends_receiver, as: :apply_friend

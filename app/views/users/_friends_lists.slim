@@ -10,18 +10,13 @@
       .panel.panel-default
         .panel-heading role="tab"
           h4.panel-title
-            = link_to "Item 1", "#collapseOne", "aria-expanded": "true", "aria-controls": "collapseOne", aria: {expanded: true, "aria-controls" => "collapseOne"}, data: {toggle: "collapse"}
+            = link_to "所有好友", "#collapseOne", "aria-expanded": "true", "aria-controls": "collapseOne", aria: {expanded: true, "aria-controls" => "collapseOne"}, data: {toggle: "collapse"}
             span.pull-right.badge = current_user.friends.count
         .panel-collapse.collapse id="collapseOne" role="tabpanel" aria-labelledby="headingOne"
           .panel-body
             table.table.table-hover
-              tbody
-                - current_user.friends.each do |friend|
-                  tr 
-                    td 
-                      = link_to friend.name, "#", id: "connect_friend_#{friend.id}"
-                      span.pull-right.badge = current_user.friends_count
-
+              tbody id="my_all_friends"
+                = render partial: "friend_item", collection: current_user.friends, as: :friend
 
       / .panel.panel-default
       /   .panel-heading role="tab"
