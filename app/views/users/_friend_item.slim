@@ -1,4 +1,4 @@
 tr 
   td 
-    = link_to friend.name, "#", id: "connect_friend_#{friend.id}"
+    = link_to conversation.with(current_user).name, conversation_path(conversation), id: "connect_friend_#{conversation.id}", remote: true
     span.pull-right.badge
