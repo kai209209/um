@@ -1,0 +1,1 @@
+$("#content-body").empty().append('<%= j render partial: "conversations/conversation", locals: { conversation: @conversation, user_messages: @user_messages, user_message: @user_message} %>')
