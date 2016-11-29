@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :friends_relationships
   has_many :friends,  through: :friends_relationships, source: :friend
 
+  has_many :user_messages
+
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+
   def name
     email.split("@").first
   end
@@ -17,10 +22,6 @@ class User < ApplicationRecord
   def friends_count
     0
   end
-
-  # def friends
-  #   User.all
-  # end
 
   def self.search(params, current_user)
     users = User.where("email LIKE ?", "%#{params[:email]}%").where.not(id: current_user.id) if params[:email].present?
