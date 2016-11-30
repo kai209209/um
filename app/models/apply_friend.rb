@@ -10,6 +10,7 @@ class ApplyFriend < ApplicationRecord
   def create_user_friends_relationship
     FriendsRelationship.create(user: self.author, friend: self.receiver)
     FriendsRelationship.create(user: self.receiver, friend: self.author)
+    Conversation.create(author: self.author, receiver: self.receiver)
     NotifyFriendsRelationshipJob.perform_later(self.author, self.receiver)
   end
  

@@ -15,7 +15,7 @@ class NotifyFriendsRelationshipJob < ApplicationJob
   private
 
   def render_notify_friends_relationship(user)
-    ApplicationController.render(partial: 'users/friend_item', collection: user.friends, as: :friend)
+    ApplicationController.render(partial: 'users/friend_item', collection: user.all_conversations, as: :conversation, locals: { current_user: user })
   end
 
   def render_friends_relationship_notification(receiver)

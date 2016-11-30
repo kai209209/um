@@ -18,6 +18,12 @@
 @import "bootstrap";
 @import "vars";
 
+.conversation-body {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 2em;
+}
+
 .notification {
   position: fixed;
   right: 10px;

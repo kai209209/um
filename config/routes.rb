@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :friends_relationships
+  resources :conversations, only: :show
+  resources :user_messages, only: :create
 
 end
