@@ -8,6 +8,9 @@ jQuery(document).on 'turbolinks:load', ->
 
       disconnected: ->
 
+      send_message: (messages, conversation_id) ->
+        @perform 'send_message', messages: messages, conversation_id: conversation_id
+
       received: (data) ->
         switch data['operate']
           when "notify_apply_friend"
@@ -15,6 +18,9 @@ jQuery(document).on 'turbolinks:load', ->
             
           when "notify_friends_relationship"
             @operate_notify_friends_relationship(data)
+
+          when "send_message"
+            @operate_send_message(data)
             
 
       operate_notify_apply_friend: (data) ->
@@ -32,5 +38,25 @@ jQuery(document).on 'turbolinks:load', ->
           $("#my_all_friends").empty().append(data["new_friends_relationship"])
 
         $("body").append(data['friends_relationship_notification'])
+
+      operate_send_message: (data) ->
+        messages = $('.conversation-body')
+        messages_to_bottom = -> messages.scrollTop(messages.prop("scrollHeight"))
+
+        if $(".conversation-body").size() > 0 && messages.data('conversation-id') == data['conversation_id']
+          messages.append(data['message'])
+          messages_to_bottom()
+        else
+          $('body').append(data['notification'])
+
+
+
+
+
+
+
+
+
+
 
 

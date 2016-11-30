@@ -1,1 +1,13 @@
-h1 abc
+h3 = conversation.with(current_user).name
+
+div id="conversation-main"
+  .conversation-body data-conversation-id="#{conversation.id}"
+    = render user_messages
+
+  = form_for user_message, html: {role: "form"} do |f| 
+    = hidden_field_tag 'conversation_id', conversation.id 
+    .form-group
+      = f.text_area :content, rows: 4, class: "form-control"
+
+    = f.submit "发送", class: "btn btn-default"
+
