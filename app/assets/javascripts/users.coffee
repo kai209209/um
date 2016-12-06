@@ -1,4 +1,4 @@
-jQuery(document).on 'turbolinks:load', ->
+jQuery(document).on 'ready', ->
   $(document).on 'click', '.notification .close', ->
     $(this).parents('.notification').fadeOut(1000)
 

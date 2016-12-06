@@ -6,6 +6,9 @@ html
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    - if params[:action] == "friends" && params[:controller] == "users"
+      meta name="turbolinks-cache-control" content="no-cache"
+      
 
   body
     = render 'shared/nav'
