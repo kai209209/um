@@ -1,18 +1,10 @@
-- if current_user == user_message.user
-  h5.text-success 
+= div_for user_message, class: current_user == user_message.user ? "bg-success" : "bg-info" do
+  h5
     = user_message.user.name
     small 
       | |
       = time_ago_in_words user_message.created_at
       |前
-- else
-  h5.text-primary
-    = user_message.user.name
-    small 
-      | |
-      = time_ago_in_words user_message.created_at
-      |前
+  
+  p = user_message.content
 
-p ----------------------
-p = user_message.content
-hr
