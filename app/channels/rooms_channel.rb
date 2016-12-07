@@ -11,7 +11,7 @@ class RoomsChannel < ApplicationCable::Channel
     conversation = Conversation.find(data["conversation_id"])
     if conversation && conversation.participates?(current_user)
       user_message = current_user.user_messages.new(content: data['messages'], conversation: conversation)
-      user_message.save!
+      user_message.save_and_perform_job(current_user)
     end
   end
 end

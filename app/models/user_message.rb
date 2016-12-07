@@ -9,4 +9,9 @@ class UserMessage < ApplicationRecord
   def receiver
     self.conversation.with(self.user)
   end
+
+  def save_and_perform_job(current_user)
+    self.save!
+    SendUserMessagesJob.perform_later(self, current_user) 
+  end
 end

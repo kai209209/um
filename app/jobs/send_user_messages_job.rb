@@ -1,8 +1,8 @@
 class SendUserMessagesJob < ApplicationJob
   queue_as :default
 
-  def perform(user_message)
-    message = render_message(user_message)
+  def perform(user_message, current_user)
+    message = render_message(user_message, current_user)
     ActionCable.server.broadcast("user_#{user_message.user.id}_room_channel",
                                   message: message,
                                   conversation_id: user_message.conversation.id,
@@ -17,8 +17,8 @@ class SendUserMessagesJob < ApplicationJob
 
   private
 
-  def render_message(user_message)
-    ApplicationController.render(partial: 'user_messages/user_message', locals: { user_message: user_message })
+  def render_message(user_message, current_user)
+    ApplicationController.render(partial: 'user_messages/user_message', locals: { user_message: user_message, current_user: current_user })
   end
 
   def render_user_message_notification(user_message)
