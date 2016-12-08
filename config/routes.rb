@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   resources :friends_relationships
   resources :conversations, only: :show
   resources :user_messages, only: :create
+  resources :topics do 
+    resources :comments, only: :create
+  end
 
 end

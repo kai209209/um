@@ -5,21 +5,16 @@
         h1 = current_user.name
       .follow-info.row.hide-ios
         .col-xs-12.followers
-          = link_to current_user.friends_count, "#", class: "counter"
-          = link_to "我的好友", "#", class: "text"
+          = link_to current_user.friends.count, friends_users_path, class: "counter"
+          = link_to "我的好友", friends_users_path, class: "text"
 
   .panel.panel-default id="user_github_repos"
     .panel-heading More
     .ul.list-group
       li.list-group-item
         .title
-          = link_to "我的好友", friends_users_path
-          span.watchers = current_user.friends_count
-
-      li.list-group-item
-        .title
           = link_to "查找用户", users_path
 
       li.list-group-item
         .title
-          = link_to "话题", "#"
+          = link_to "话题", topics_path
