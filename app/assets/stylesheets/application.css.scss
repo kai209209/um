@@ -7,6 +7,9 @@
 @import "bootstrap";
 @import "vars";
 
+body {
+  word-wrap: break-word;word-break:break-all;
+}
 .conversation-body {
   max-height: 400px;
   overflow-y: auto;
