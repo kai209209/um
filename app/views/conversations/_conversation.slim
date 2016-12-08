@@ -10,7 +10,7 @@
 hr
 
 div id="conversation-main"
-  .conversation-body data-conversation-id="#{conversation.id}"
+  .conversation-body.items data-conversation-id="#{conversation.id}"
     = render user_messages, locals: {current_user: current_user}
 
   = form_for user_message, html: {role: "form"} do |f| 
