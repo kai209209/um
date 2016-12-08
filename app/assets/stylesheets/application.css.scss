@@ -8,7 +8,8 @@
 @import "vars";
 
 body {
-  word-wrap: break-word;word-break:break-all;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .conversation-body {
   max-height: 400px;
