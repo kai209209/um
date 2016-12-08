@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129081123) do
+ActiveRecord::Schema.define(version: 20161208065234) do
 
   create_table "apply_friends", force: :cascade do |t|
     t.integer  "author_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20161129081123) do
     t.datetime "updated_at",   null: false
     t.index ["author_id"], name: "index_apply_friends_on_author_id"
     t.index ["receiver_id"], name: "index_apply_friends_on_receiver_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_comments_on_topic_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -43,6 +53,15 @@ ActiveRecord::Schema.define(version: 20161129081123) do
     t.index ["friend_id"], name: "index_friends_relationships_on_friend_id"
     t.index ["group_id"], name: "index_friends_relationships_on_group_id"
     t.index ["user_id"], name: "index_friends_relationships_on_user_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "user_messages", force: :cascade do |t|
