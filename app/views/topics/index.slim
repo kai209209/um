@@ -4,4 +4,10 @@
 .panel.panel-default
   .panel-body
     div id="user-content"
+      .row
+        .col-md-4.col-md-offset-4
+          = link_to "新话题", new_topic_path, class: "btn btn-primary btn-sm btn-block"
+
+      hr
+      = render @topics
 

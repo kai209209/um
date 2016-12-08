@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  layout 'users'
+
   before_action :find_topic, only: [:show, :edit, :update, :destroy]
 
   def index

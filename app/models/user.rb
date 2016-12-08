@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
 
   has_many :comments
+  has_many :topics
 
   def name
     email.split("@").first
