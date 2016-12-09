@@ -18,4 +18,17 @@ module ApplicationHelper
       link_to message, route, class: "btn btn-info btn-xs", id: "apply_user_#{user.id}", method: send_method, remote: true
     end
   end
+
+
+  def markdown(text)
+    syntax_highlighter(text).html_safe
+  end
+
+  def syntax_highlighter(html)
+    doc = Nokogiri::HTML(html)
+    doc.search("pre").each do |pre|
+      pre.replace Albino.colorize(pre.text.rstrip, :ruby)
+    end
+    doc.to_s
+  end
 end

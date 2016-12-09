@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208065234) do
+ActiveRecord::Schema.define(version: 20161209090300) do
 
   create_table "apply_friends", force: :cascade do |t|
     t.integer  "author_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20161208065234) do
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.integer  "sponsor_id"
+    t.integer  "receiver_id"
+    t.boolean  "status",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["receiver_id", "sponsor_id"], name: "index_friends_on_receiver_id_and_sponsor_id", unique: true
+    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
+    t.index ["sponsor_id"], name: "index_friends_on_sponsor_id"
+  end
+
   create_table "friends_relationships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -59,8 +70,9 @@ ActiveRecord::Schema.define(version: 20161208065234) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "content_html"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 

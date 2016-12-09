@@ -5,7 +5,8 @@
 
       .panel-body.markdown
         article
-          = raw @topic.content
+          = markdown @topic.content_html
+          / = markdown @topic.content
 
       .panel-footer.clearfix
         = render 'buttons'
