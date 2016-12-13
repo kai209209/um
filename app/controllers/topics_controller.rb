@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  include ApplicationHelper
 
   before_action :find_topic, only: [:show, :edit, :update, :destroy]
 
@@ -37,6 +38,13 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     redirect_to topics_path
+  end
+
+  def topic_preview
+    content =  Um::Markdown.render(params[:content])
+    content_html = syntax_highlighter(content).html_safe
+    render json: content_html
+
   end
 
   private
