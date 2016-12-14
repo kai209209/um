@@ -1,0 +1,11 @@
+.topic.media
+  .avatar.media-left
+    = image_tag 'image', size: 48, class: "media-object avatar-48"
+  .infos.media-body
+    .title.media-heading
+      = link_to truncate(topic.title, length: 100), topic_path(topic)
+    .info
+      = link_to topic.user.name, user_path(topic.user), class: "user-name"
+  .count.media-right
+    - if topic.comments.count > 0
+      .state-false = topic.comments.count

@@ -1,0 +1,12 @@
+.row
+  .col-md-10.col-md-offset-1
+    .topic-detail.panel.panel-default
+      = render partial: 'topics/topic_info', locals: { topic: @topic }
+
+      .panel-body.markdown
+        article
+          = markdown @topic.content_html
+          / = markdown @topic.content
+
+      .panel-footer.clearfix
+        = render 'buttons'

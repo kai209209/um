@@ -3,7 +3,6 @@ class SendUserMessagesJob < ApplicationJob
 
   def perform(user_message)
     ActionCable.server.broadcast("user_#{user_message.user.id}_room_channel",
-                                  # message: message,
                                   message: render_message(user_message, user_message.user),
                                   conversation_id: user_message.conversation.id,
                                   operate: "send_message")

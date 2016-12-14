@@ -13,5 +13,14 @@ module Um
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Beijing'
     config.i18n.default_locale = "zh-CN"
+
+    config.autoload_paths += [
+      Rails.root.join('lib')
+    ]
+
+    config.eager_load_paths += [
+      Rails.root.join('lib/um')
+    ]
+
   end
 end
