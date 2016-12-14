@@ -10,3 +10,9 @@
 
       .panel-footer.clearfix
         = render 'buttons'
+
+    = render partial: "reply_all", locals: {comments: @comments}
+
+    .panel.panel-default id="reply"
+      .panel-body
+        = render "reply_form"

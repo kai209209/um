@@ -1,0 +1,7 @@
+- if comments.blank?
+  .no-result
+    | 暂无回复
+- else
+  .panel.panel-default id="replies"
+    .items.panel-body
+      = render partial: "/comments/comment", collection: comments

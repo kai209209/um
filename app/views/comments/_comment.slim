@@ -1,0 +1,9 @@
+.reply
+  .avatar
+    = image_tag "image", size: 50
+  .infos
+    .info
+      span.name
+        = comment.user.name
+    .markdown
+      = comment.content
