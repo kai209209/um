@@ -42,9 +42,10 @@ class TopicsController < ApplicationController
 
   def topic_preview
     content =  Um::Markdown.render(params[:content])
-    content_html = syntax_highlighter(content).html_safe
-    render json: content_html
-
+    @content_html = syntax_highlighter(content).html_safe
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

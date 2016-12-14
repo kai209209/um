@@ -1,0 +1,1 @@
+$("#topic_content_form").append('<div id="content_html_preview"><%= j @content_html %></div>')

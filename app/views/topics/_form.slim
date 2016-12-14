@@ -1,8 +1,8 @@
 = form_for @topic, url: @topic.new_record? ? topics_path : topic_path(@topic), html: {class: "form"} do |f|
   .form-group
     = f.text_field :title, class: "form-control", placeholder: "标题"
+  = render "editor_toolbar"
   .form-group id="topic_content_form"
     = f.text_area :content, class: "topic-editor form-control closewarning", rows: 20, id: "topic_content"
   .form-group
     = f.submit "提交", class: "btn btn-primary col-xs-2"
-    = button_tag "预览", class: "btn btn-success col-xs-2", id: "topic_preview", data: {path: "#{topic_preview_topics_path}"}

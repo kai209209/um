@@ -2,11 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery(document).on 'ready', ->
-  $("#topic_preview").click ->
+  $(".editor-toolbar ul li.edit a").click ->
+    $("#topic_content").show()
+    $(@).parent().addClass("active")
+    $(".editor-toolbar ul li.preview").removeClass("active")
+    $("#content_html_preview").remove()
+    false
+
+
+  $(".editor-toolbar ul li.preview a").click ->
+    $("#topic_content").hide()
+    $(@).parent().addClass("active")
+    $(".editor-toolbar ul li.edit").removeClass("active")
     content = $(@).parents("form").find("#topic_content")
-    if $.trim(content.val()).length > 0  
-      content_html = $.ajax({url: $(@).data('path'), data: {content: content.val()}})
-      console.log content_html
-      content.hide()
-      $("#topic_content_form").html(content_html.responseText)
-      false
+    $.ajax({url: $(@).attr('href'), data: {content: content.val()}})
+    false
