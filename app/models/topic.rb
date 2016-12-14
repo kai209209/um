@@ -7,6 +7,6 @@ class Topic < ApplicationRecord
   private
 
   def change_content_markdown
-    self.content_html = Um::Markdown.render(self.content)
+    self.content_html = Um::Markdown.render(self.content) if self.content_changed?
   end
 end
