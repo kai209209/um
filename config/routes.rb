@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     collection do
       get :topic_preview
     end
-    resources :comments, only: :create
+    resources :comments, only: [:create, :edit] do
+      collection do 
+        get :comment_preview
+      end
+    end
   end
 
 end

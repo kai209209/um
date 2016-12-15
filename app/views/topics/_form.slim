@@ -2,7 +2,7 @@
   .form-group
     = f.text_field :title, class: "form-control", placeholder: "标题"
   = render "editor_toolbar"
-  .form-group id="topic_content_form"
-    = f.text_area :content, class: "topic-editor form-control closewarning", rows: 20, id: "topic_content"
+  .form-group.the_content_form
+    = f.text_area :content, class: "topic-editor form-control closewarning", rows: 20, data: {url: topic_preview_topics_path}
   .form-group
     = f.submit "提交", class: "btn btn-primary col-xs-2"

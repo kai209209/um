@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery(document).on 'turbolinks:load', ->
   $(".editor-toolbar ul li.edit a").click ->
-    $("#topic_content").show()
+    $(".topic-editor").show()
     $(@).parent().addClass("active")
     $(".editor-toolbar ul li.preview").removeClass("active")
     $("#content_html_preview").remove()
@@ -11,9 +11,9 @@ jQuery(document).on 'turbolinks:load', ->
 
 
   $(".editor-toolbar ul li.preview a").click ->
-    $("#topic_content").hide()
+    $(".topic-editor").hide()
     $(@).parent().addClass("active")
     $(".editor-toolbar ul li.edit").removeClass("active")
-    content = $(@).parents("form").find("#topic_content")
-    $.ajax({url: $(@).attr('href'), data: {content: content.val()}})
+    content = $(@).parents("form").find(".topic-editor")
+    $.ajax({url: content.data('url'), data: {content: content.val()}})
     false
