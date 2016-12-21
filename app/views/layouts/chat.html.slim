@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Um
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'chat'
+
+  body
+    = render 'shared/nav'
+    .main-container.container id="chating-main"
+      .row
+        .col-md-4
+          / = render "sidebar"
+          = yield :sidebar
+        .col-md-8
+          = yield

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  
   mount ActionCable.server => '/cable'
   root 'static#index'
+  get 'chating', to: 'chat#chating'
 
   devise_for :users
   resources :users, only: [:index,:show] do
