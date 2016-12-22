@@ -1,17 +1,19 @@
 #= require components/chating
 #= require components/my-name
 #= require components/friend-list
+#= require components/chating-list
 $ ->
 
   app = new Vue({
     el: '#chating-main'
     data: 
       msg: 'Hi'
-      friends: ''#$.ajax({ url: '/users/friends.json'   })
+      friends: ''
+      chatingFriends: []
 
     methods: 
       chatingNow: (friend) ->
-        console.log friend
+        this.chatingFriends.push(friend)
 
     created: ->
       _self = this
@@ -27,4 +29,5 @@ $ ->
       chatingList: VCompents['components/chating']
       myName: VCompents['components/my-name']
       friendList: VCompents['components/friend-list']
+      chatingList: VCompents['components/chating-list']
     })

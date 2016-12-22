@@ -25,7 +25,7 @@
                 <a href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-toggle="collapse">所有好友</a>
               </h4>
             </div>
-            <div class="panel-collapse collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body">
                 <table class="table table-hover">
                   <tbody>
