@@ -11,8 +11,4 @@ html
     = render 'shared/nav'
     .main-container.container id="chating-main"
       .row
-        .col-md-4
-          / = render "sidebar"
-          = yield :sidebar
-        .col-md-8
-          = yield
+        = yield

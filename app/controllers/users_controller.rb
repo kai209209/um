@@ -13,5 +13,10 @@ class UsersController < ApplicationController
 
   def friends
     @friends = current_user.friends
+    respond_to do |format|
+      format.json
+      format.js
+      format.html
+    end
   end
 end
