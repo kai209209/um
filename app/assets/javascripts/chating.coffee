@@ -2,6 +2,7 @@
 #= require components/my-name
 #= require components/friend-list
 #= require components/chating-list
+#=
 $ ->
 
   app = new Vue({
@@ -13,11 +14,11 @@ $ ->
 
     methods: 
       chatingNow: (friend) ->
-        this.chatingFriends.push(friend)
+        unless friend in this.chatingFriends
+          this.chatingFriends.push(friend)        
 
     created: ->
       _self = this
-
       $.ajax({ 
         url: '/users/friends.json'
         success: (data)->
