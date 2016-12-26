@@ -2,7 +2,7 @@
 #= require components/my-name
 #= require components/friend-list
 #= require components/chating-list
-#=
+
 $ ->
 
   app = new Vue({
@@ -11,11 +11,13 @@ $ ->
       msg: 'Hi'
       friends: ''
       chatingFriends: []
+      friend: ''
 
     methods: 
       chatingNow: (friend) ->
         unless friend in this.chatingFriends
-          this.chatingFriends.push(friend)        
+          this.chatingFriends.push(friend)
+        this.friend = friend
 
     created: ->
       _self = this

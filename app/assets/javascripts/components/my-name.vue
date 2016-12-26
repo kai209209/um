@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <div>My name is abc</div>
+  <div>My name is 'myname'</div>
 </template>
