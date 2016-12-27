@@ -6,20 +6,24 @@
       chatingCount: 0
       theFriend: ''
 
-    props: ['chatingFriends', 'friend']
+    props: ['chatingFriends', 'friend', 'currentUser']
 
     methods:
       chatingWithFriend: (friend) ->
-        this.friend = friend
+        this.theFriend = friend
 
       closeChating: (friend) ->
+        if this.theFriend == friend          
+          this.theFriend = this.chatingFriends[0]
         this.chatingFriends.splice(this.chatingFriends.indexOf(friend), 1)
 
 
     updated: ->
       this.chatingCount = this.chatingFriends.length
-      this.theFriend = this.friend
 
+    watch:
+      friend: (val, oldVal) ->
+        this.theFriend = val
 
     components:
       conversation: VCompents['components/conversation']    
@@ -41,8 +45,8 @@
           </li>
         </ul>
       </div>
-      <div class="row" v-if="chatingCount">
-        <conversation :friend="theFriend"></conversation>        
+      <div class="row" v-if="chatingCount"> 
+        <conversation :friend="theFriend" :current-user="currentUser"></conversation>        
       </div>
     </div>
   </div>

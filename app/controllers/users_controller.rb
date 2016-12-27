@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   end
 
   def profile
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   def friends

@@ -12,6 +12,7 @@ $ ->
       friends: ''
       chatingFriends: []
       friend: ''
+      currentUser: ''
 
     methods: 
       chatingNow: (friend) ->
@@ -25,6 +26,12 @@ $ ->
         url: '/users/friends.json'
         success: (data)->
           _self.friends = data
+         })
+
+      $.ajax({ 
+        url: '/users/profile.json'
+        success: (data)->
+          _self.currentUser = data.currentUser
          })
 
 
