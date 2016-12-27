@@ -18,9 +18,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :topics
 
-  def name
-    email.split("@").first
-  end
+  # def name
+  #   email.split("@").first
+  # end
 
   def friends_count
     0
