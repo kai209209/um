@@ -15,6 +15,16 @@
         if !value
           return
 
+        messageProperty = {
+          id: 'null'
+          content: this.content
+          user_id: this.currentUser.id
+          conversation_id: this.conversation.id
+        }
+
+        this.userMessages.push(messageProperty)
+        messageIndex = this.userMessages.indexOf(messageProperty)
+
         _self = this
 
         $.ajax({
@@ -24,7 +34,7 @@
             content: this.content
             conversation_id: this.conversation.id
           success: (data) ->
-            _self.userMessages.push(data)
+            _self.userMessages.splice(messageIndex, 1, data)
             _self.rollHeight            
           })
 
