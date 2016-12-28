@@ -24,10 +24,10 @@
 
 <template>
   <div class="reply">
-    <dir class="avatar">
-      <img src="assets/image.jpg" height="30" width="30">
+    <dir class="col-md-1">
+      <img src="assets/image.jpg" height="40" width="40">
     </dir>
-    <div class="infos">
+    <div class="infos col-md-11">
       <div class="info"><span class="name">{{ name }}</span>·<span class="time">{{ message.created_at | formatDate}}</span></div>
       <div class="markdown"><span class="">{{message.content}}</span></div>
       <hr>
