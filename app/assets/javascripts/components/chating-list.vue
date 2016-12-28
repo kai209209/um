@@ -46,7 +46,8 @@
         </ul>
       </div>
       <div class="row" v-if="chatingCount"> 
-        <conversation :friend="theFriend" :current-user="currentUser"></conversation>        
+        <hr>
+        <conversation :friend="theFriend" :current-user="currentUser"></conversation>
       </div>
     </div>
   </div>
