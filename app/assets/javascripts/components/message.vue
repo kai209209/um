@@ -10,6 +10,11 @@
         else
           this.friend.name
 
+      messageColor: ->
+        if this.message.user_id == this.currentUser.id
+          'bg-info reply infos col-md-11'
+        else
+          'bg-success reply infos col-md-11'
 
     created: ->
       allmessages = $('.conversation-body')
@@ -27,9 +32,9 @@
     <dir class="col-md-1">
       <img src="assets/image.jpg" height="40" width="40">
     </dir>
-    <div class="infos col-md-11">
+    <div :class="messageColor">
       <div class="info"><span class="name">{{ name }}</span>·<span class="time">{{ message.created_at | formatDate}}</span></div>
-      <div class="markdown"><span class="">{{message.content}}</span></div>
+      <div class="markdown"><span >{{message.content}}</span></div>
       <hr>
     </div>  
   </div>
