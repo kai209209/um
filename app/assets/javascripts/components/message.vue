@@ -17,7 +17,7 @@
 
     filters:
       formatDate: (v) ->
-        moment(v, 'YYYY-MM-DD HH-mm').format('YYYY-MM-DD HH:mm')
+        moment(v).format('YYYY-MM-DD HH:mm')
   }
 </script>
 
