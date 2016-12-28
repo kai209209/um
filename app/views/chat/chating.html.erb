@@ -5,7 +5,7 @@
 <div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-body">
-      <chating-list :chating-friends='chatingFriends' :current-user="currentUser" :friend="friend"></chating-list>
+      <chating-list :chating-friends='chatingFriends' :friend="friend" :current-user='<%= current_user.to_json %>'></chating-list>
     </div>
   </div>
 </div>

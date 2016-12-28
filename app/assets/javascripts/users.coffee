@@ -12,15 +12,15 @@ jQuery(document).on 'ready', ->
         @perform 'send_message', messages: messages, conversation_id: conversation_id
 
       received: (data) ->
-        switch data['operate']
-          when "notify_apply_friend"
-            @operate_notify_apply_friend(data)
+        # switch data['operate']
+        #   when "notify_apply_friend"
+        #     @operate_notify_apply_friend(data)
             
-          when "notify_friends_relationship"
-            @operate_notify_friends_relationship(data)
+        #   when "notify_friends_relationship"
+        #     @operate_notify_friends_relationship(data)
 
-          when "send_message"
-            @operate_send_message(data)
+        #   when "send_message"
+        #     @operate_send_message(data)
             
 
       operate_notify_apply_friend: (data) ->

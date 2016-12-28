@@ -16,10 +16,6 @@
         else
           'bg-success reply infos col-md-11'
 
-    created: ->
-      allmessages = $('.conversation-body')
-      allmessages.scrollTop(allmessages.prop("scrollHeight"))
-
     filters:
       formatDate: (v) ->
         moment(v).format('YYYY-MM-DD HH:mm')
@@ -30,7 +26,7 @@
 <template>
   <div class="reply">
     <dir class="col-md-1">
-      <img src="assets/image.jpg" height="40" width="40">
+      <img src="assets/image.jpg" height="40" width="40">      
     </dir>
     <div :class="messageColor">
       <div class="info"><span class="name">{{ name }}</span>·<span class="time">{{ message.created_at | formatDate}}</span></div>
