@@ -2,7 +2,7 @@
 
 <script lang="coffee">
   vm = {
-    props: ['friend', 'currentUser']
+    props: ['friend', 'currentUser', 'socketData']
 
     data: ->
       conversation: ''
@@ -61,7 +61,7 @@
       this.rollthHeight(1)
 
     watch:
-      friend: (val, oldVal)->
+      friend: (val) ->
         _self = this
         $.ajax({
           url: '/conversations/chat_with_friend_conversation.json'
@@ -70,6 +70,10 @@
             _self.conversation = data.conversation
             _self.userMessages = data.userMessages
            })    
+
+      socketData: (val) ->
+        this.userMessages.push(val)
+
 
     components:
       message: VCompents['components/message']    

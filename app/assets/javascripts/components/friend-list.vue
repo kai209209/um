@@ -1,6 +1,6 @@
 <script lang="coffee">
   vm = {
-    props: ['friends']
+    props: ['friends', 'socketData']
     methods:
       chatNow: (friend) ->
         this.$emit('chating-now', friend)

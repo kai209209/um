@@ -1,9 +1,18 @@
-# App.rooms = App.cable.subscriptions.create "RoomsChannel",
-#   connected: ->
-#     # Called when the subscription is ready for use on the server
+class UserChat
+  constructor: (@app = null)->
+    $this = this
+    if $("#current_user").size() > 0
+      App.rooms = App.cable.subscriptions.create "RoomsChannel",
+        connected: ->
 
-#   disconnected: ->
-#     # Called when the subscription has been terminated by the server
+        disconnected: ->
 
-#   received: (data) ->
-#     # Called when there's incoming data on the websocket for this channel
+        received: (data) ->
+          $this.setVueData(data)
+
+
+  setVueData: (data) ->
+    @app.setVueData(data)
+
+
+window.UserChat = UserChat

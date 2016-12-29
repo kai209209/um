@@ -5,8 +5,9 @@
     data: ->
       chatingCount: 0
       theFriend: ''
+      conversationSocketData: ''
 
-    props: ['chatingFriends', 'friend', 'currentUser']
+    props: ['chatingFriends', 'friend', 'currentUser', 'socketData']
 
     methods:
       chatingWithFriend: (friend) ->
@@ -22,11 +23,16 @@
       this.chatingCount = this.chatingFriends.length
 
     watch:
-      friend: (val, oldVal) ->
+      friend: (val) ->
         this.theFriend = val
 
+      socketData: (val) ->
+        if val.operate == 'send_message'
+          this.conversationSocketData = val.message
+
+
     components:
-      conversation: VCompents['components/conversation']    
+      conversation: VCompents['components/conversation']
   }
 
 
@@ -47,7 +53,7 @@
       </div>
       <div class="row" v-if="chatingCount"> 
         <hr>
-        <conversation :friend="theFriend" :current-user="currentUser"></conversation>
+        <conversation :friend="theFriend" :current-user="currentUser" :socket-data="conversationSocketData"></conversation>
       </div>
     </div>
   </div>

@@ -1,5 +1,3 @@
-#= require components/chating
-#= require components/my-name
 #= require components/friend-list
 #= require components/chating-list
 
@@ -12,12 +10,16 @@ $ ->
       friends: ''
       chatingFriends: []
       friend: ''
+      socketData: ''
 
     methods: 
       chatingNow: (friend) ->
         unless friend in this.chatingFriends
           this.chatingFriends.push(friend)
         this.friend = friend
+
+      setVueData: (data) ->
+        this.socketData = data
 
     created: ->
       _self = this
@@ -27,9 +29,9 @@ $ ->
           _self.friends = data
          })
 
-    components: 
-      chatingList: VCompents['components/chating']
-      myName: VCompents['components/my-name']
+    components:
       friendList: VCompents['components/friend-list']
       chatingList: VCompents['components/chating-list']
     })
+
+  chat = new UserChat(app)
