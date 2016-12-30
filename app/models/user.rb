@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :topics
 
+  after_create :generate_avatar
 
   def friends_count
     0
@@ -30,6 +31,14 @@ class User < ApplicationRecord
 
   def all_conversations
     Conversation.where("author_id = ? OR receiver_id = ?", self.id, self.id)
+  end
+
+  private
+
+  def generate_avatar
+    string = Pinyin.t(self.name)
+    avatar = LetterAvatar.generate(string, 100)
+    self.update_columns(avatar: avatar)
   end
 
 end
