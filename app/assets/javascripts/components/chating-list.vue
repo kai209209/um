@@ -60,7 +60,7 @@
       <div class="row" v-if="chatingCount"> 
         <hr>
         <transition-group name="fade" tag="div">
-            <conversation v-for="selectfriend in chatingFriends" v-bind:key='selectfriend' :friend="selectfriend" :current-user="currentUser" v-if="showFriend(selectfriend)"></conversation> 
+            <conversation v-for="selectfriend in chatingFriends" v-bind:key='selectfriend' :friend="selectfriend" :current-user="currentUser" v-if="showFriend(selectfriend)" :socket-data="conversationSocketData"></conversation> 
         </transition-group>          
     
       </div>

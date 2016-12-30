@@ -72,7 +72,8 @@
            })    
 
       socketData: (val) ->
-        this.userMessages.push(val)
+        if val.conversation_id == this.conversation.id
+          this.userMessages.push(val)
 
 
     components:
