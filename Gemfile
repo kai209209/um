@@ -1,6 +1,6 @@
 source 'https://gems.ruby-china.org'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -28,6 +28,10 @@ gem 'bootstrap-sass'
 gem 'record_tag_helper', '~> 1.0'
 gem 'redcarpet'
 gem 'albino'
+gem 'vuejs-rails'
+gem 'sprockets-vue'
+
+gem 'momentjs-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

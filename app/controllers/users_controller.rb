@@ -9,9 +9,18 @@ class UsersController < ApplicationController
   end
 
   def profile
+    respond_to do |format|
+      format.json
+      format.html
+    end
   end
 
   def friends
     @friends = current_user.friends
+    respond_to do |format|
+      format.json
+      format.js
+      format.html
+    end
   end
 end

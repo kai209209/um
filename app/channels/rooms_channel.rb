@@ -14,4 +14,5 @@ class RoomsChannel < ApplicationCable::Channel
       user_message.save!
     end
   end
+
 end
