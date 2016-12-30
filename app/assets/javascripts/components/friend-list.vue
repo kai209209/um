@@ -30,7 +30,7 @@
                 <table class="table table-hover">
                   <tbody>
                     <tr v-for="friend in friends">
-                      <td><a href="#" @click.prevent="chatNow(friend)">{{friend.email}}</a></td>
+                      <td><a href="#" @click.prevent="chatNow(friend)">{{friend.name}}</a></td>
                       <td>操作</td>
                     </tr>                    
                   </tbody>
