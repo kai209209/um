@@ -18,6 +18,12 @@
           this.theFriend = this.chatingFriends[0]
         this.chatingFriends.splice(this.chatingFriends.indexOf(friend), 1)
 
+      showFriend: (selectfriend) ->
+        if this.theFriend == selectfriend
+          true
+        else
+          false
+
 
     updated: ->
       this.chatingCount = this.chatingFriends.length
@@ -53,14 +59,14 @@
       </div>
       <div class="row" v-if="chatingCount"> 
         <hr>
-        <conversation :friend="theFriend" :current-user="currentUser" :socket-data="conversationSocketData"></conversation>
+        <transition-group name="fade" tag="div">
+            <conversation v-for="selectfriend in chatingFriends" v-bind:key='selectfriend' :friend="selectfriend" :current-user="currentUser" v-if="showFriend(selectfriend)"></conversation> 
+        </transition-group>          
+    
       </div>
     </div>
   </div>
 </template>
-
-
-
 
 
 
