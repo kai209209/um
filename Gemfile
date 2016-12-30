@@ -28,10 +28,17 @@ gem 'bootstrap-sass'
 gem 'record_tag_helper', '~> 1.0'
 gem 'redcarpet'
 gem 'albino'
+
+#vuejs
 gem 'vuejs-rails'
 gem 'sprockets-vue'
 
+#format date
 gem 'momentjs-rails'
+
+#Avatar
+gem 'letter_avatar'
+gem 'chinese_pinyin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
