@@ -1,9 +1,16 @@
 <script lang="coffee">
+
   vm = {
+
     props: ['friends', 'socketData']
+
     methods:
       chatNow: (friend) ->
         this.$emit('chating-now', friend)
+
+    computed:
+      count: ->
+        this.$store.state.count
   }
 </script>
 
@@ -12,7 +19,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <a href="/apply_friends">好友申请</a>
-        <span class="pull-right badge">0</span>
+        <span class="pull-right badge">{{count}}</span>
       </div>
     </div>
 

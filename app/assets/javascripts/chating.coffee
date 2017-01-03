@@ -1,10 +1,10 @@
 #= require components/friend-list
 #= require components/chating-list
-
 $ ->
 
   app = new Vue({
     el: '#chating-main'
+    store,
     data: 
       msg: 'Hi'
       friends: ''
