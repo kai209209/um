@@ -4,38 +4,35 @@
   vm = {
     data: ->
       chatingCount: 0
-      theFriend: ''
-      conversationSocketData: ''
 
-    props: ['chatingFriends', 'friend', 'currentUser', 'socketData']
+    props: ['currentUser']
 
     methods:
       chatingWithFriend: (friend) ->
-        this.theFriend = friend
+        this.$store.commit('changeCurrentChattingFriend', friend)
 
-      closeChating: (friend) ->        
-        this.chatingFriends.splice(this.chatingFriends.indexOf(friend), 1)
-        if this.chatingFriends.length > 0
-          this.theFriend = this.chatingFriends[0]
+      closeChating: (friend) ->
+        this.$store.commit('removeChatingFriends', friend)
 
       showFriend: (selectfriend) ->
-        if this.theFriend == selectfriend
+        if this.currentChattingFriend == selectfriend
           true
         else
           false
 
+    computed:
+
+      chatingFriends: ->
+        this.$store.state.chatingFriends
+
+      currentChattingFriend: ->
+        this.$store.state.currentChattingFriend
+
+    created: ->
+      this.$store.commit('setCurrentUser', this.currentUser)
 
     updated: ->
       this.chatingCount = this.chatingFriends.length
-
-    watch:
-      friend: (val) ->
-        this.theFriend = val
-
-      socketData: (val) ->
-        if val.operate == 'send_message'
-          this.conversationSocketData = val.message
-
 
     components:
       conversation: VCompents['components/conversation']
@@ -60,7 +57,7 @@
       <div class="row" v-if="chatingCount"> 
         <hr>
         <transition-group name="fade" tag="div" appear>
-            <conversation v-for="selectfriend in chatingFriends" v-bind:key='selectfriend' :friend="selectfriend" :current-user="currentUser" v-if="showFriend(selectfriend)" :socket-data="conversationSocketData"></conversation> 
+            <conversation v-for="selectfriend in chatingFriends" v-bind:key='selectfriend' :friend="selectfriend" v-if="showFriend(selectfriend)"></conversation> 
         </transition-group>          
     
       </div>

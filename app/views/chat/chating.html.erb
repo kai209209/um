@@ -1,11 +1,11 @@
 <div class="col-md-4">
-  <friend-list :friends='friends.friends' @chating-now="chatingNow" :socket-data="socketData"></friend-list>
+  <friend-list :friends='friends.friends'></friend-list>
 </div>
 
 <div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-body">
-      <chating-list :chating-friends='chatingFriends' :friend="friend" :socket-data="socketData" :current-user='<%= current_user.to_json %>'></chating-list>
+      <chating-list :current-user='<%= current_user.to_json %>'></chating-list>
     </div>
   </div>
 </div>

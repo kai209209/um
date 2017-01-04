@@ -2,12 +2,23 @@
 
 <script lang="coffee">
   vm = {
-    props: ['friend', 'currentUser', 'socketData']
+    props: ['friend', 'socketData']
 
     data: ->
       conversation: ''
-      userMessages: ''
+      userMessages: []
       content: ''
+
+    computed: 
+      currentUser: ->
+        this.$store.state.currentUser
+
+      socketData: ->
+        this.$store.state.socketData
+
+      reverseUserMessages: ->
+        this.userMessages.reverse()
+      
 
     methods:
       sendMessage: ->
@@ -25,7 +36,7 @@
         this.userMessages.push(messageProperty)
         messageIndex = this.userMessages.indexOf(messageProperty)
 
-        _self = this
+        $this = this
 
         $.ajax({
           url: '/user_messages.json'
@@ -34,8 +45,8 @@
             content: this.content
             conversation_id: this.conversation.id
           success: (data) ->
-            _self.userMessages.splice(messageIndex, 1, data)
-            _self.rollHeight            
+            $this.userMessages.splice(messageIndex, 1, data)
+            $this.rollHeight            
           })
 
         this.content = ''
@@ -45,15 +56,15 @@
         allmessages.scrollTop(allmessages.prop("scrollHeight"))
 
     created: -> 
-      _self = this
+      $this = this
       $.ajax({ 
         url: '/conversations/chat_with_friend_conversation.json'
         data: {friend_id: this.friend.id}
         success: (data)->
-          _self.conversation = data.conversation
-          _self.userMessages = data.userMessages
+          $this.conversation = data.conversation
+          $this.userMessages = data.userMessages
           Vue.nextTick ->
-            _self.rollthHeight(1)
+            $this.rollthHeight(1)
          })
 
 
@@ -62,18 +73,18 @@
 
     watch:
       friend: (val) ->
-        _self = this
+        $this = this
         $.ajax({
           url: '/conversations/chat_with_friend_conversation.json'
           data: {friend_id: val.id}
           success: (data)->
-            _self.conversation = data.conversation
-            _self.userMessages = data.userMessages
+            $this.conversation = data.conversation
+            $this.userMessages = data.userMessages
            })    
 
       socketData: (val) ->
-        if val.conversation_id == this.conversation.id
-          this.userMessages.push(val)
+        if val.operate == 'send_message' && val.conversation_id == this.conversation.id
+          this.userMessages.push(val.message)
 
 
     components:
@@ -85,7 +96,7 @@
 <template>
   <div id="conversation-main">
     <div class="conversation-body items" :data-conversation-id="conversation.id">
-      <message v-for="message in userMessages" :message="message" :current-user="currentUser" :friend="friend"></message> 
+      <message v-for="message in reverseUserMessages" :message="message" :friend="friend"></message> 
     </div>
     <div class="form-group">
       <textarea class="form-control" rows='5' v-model='content' >
