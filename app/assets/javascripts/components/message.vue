@@ -25,8 +25,6 @@
         else
           avatar = this.friend.avatar.replace('public', '')
 
-
-
     filters:
       formatDate: (v) ->
         moment(v).format('YYYY-MM-DD HH:mm')

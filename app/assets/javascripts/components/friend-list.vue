@@ -1,18 +1,22 @@
+//= require components/friend
 <script lang="coffee">
 
   vm = {
 
     props: ['friends']
 
-    computed:
-      socketData: ->
-        this.$store.state.socketData
 
-    methods:
-      chatNow: (friend) ->
-        this.$store.commit('addChatingFriends', friend)
-        this.$store.commit('changeCurrentChattingFriend', friend)
+    components:
+      friend: VCompents['components/friend']
 
+    # computed:
+    #   socketData: ->
+    #     this.$store.state.socketData
+
+    # methods:
+    #   chatNow: (friend) ->
+    #     this.$store.commit('addChatingFriends', friend)
+    #     this.$store.commit('changeCurrentChattingFriend', friend)
   }
 </script>
 
@@ -39,8 +43,9 @@
                 <table class="table table-hover">
                   <tbody>
                     <tr v-for="friend in friends">
-                      <td><a href="#" @click.prevent="chatNow(friend)">{{friend.name}}</a></td>
-                      <td>操作</td>
+                      <friend :friend="friend"></friend>
+                      <!-- <td><a href="#" @click.prevent="chatNow(friend)">{{friend.name}}</a></td>
+                      <td>操作</td> -->
                     </tr>                    
                   </tbody>
                 </table>
