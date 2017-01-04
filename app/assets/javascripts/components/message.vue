@@ -1,9 +1,12 @@
 
 <script lang="coffee">
   vm = {
-    props: ['message', 'currentUser', 'friend']
+    props: ['message', 'friend']
 
     computed:
+      currentUser: ->
+        this.$store.state.currentUser
+
       name: ->
         if this.message.user_id == this.currentUser.id
           this.currentUser.name
@@ -22,9 +25,12 @@
         else
           avatar = this.friend.avatar.replace('public', '')
 
+
+
     filters:
       formatDate: (v) ->
         moment(v).format('YYYY-MM-DD HH:mm')
+
   }
 </script>
 

@@ -2,15 +2,17 @@
 
   vm = {
 
-    props: ['friends', 'socketData']
+    props: ['friends']
+
+    computed:
+      socketData: ->
+        this.$store.state.socketData
 
     methods:
       chatNow: (friend) ->
-        this.$emit('chating-now', friend)
+        this.$store.commit('addChatingFriends', friend)
+        this.$store.commit('changeCurrentChattingFriend', friend)
 
-    computed:
-      count: ->
-        this.$store.state.count
   }
 </script>
 
@@ -19,7 +21,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <a href="/apply_friends">好友申请</a>
-        <span class="pull-right badge">{{count}}</span>
+        <span class="pull-right badge">0</span>
       </div>
     </div>
 

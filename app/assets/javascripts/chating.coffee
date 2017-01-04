@@ -13,13 +13,8 @@ $ ->
       socketData: ''
 
     methods: 
-      chatingNow: (friend) ->
-        unless friend in this.chatingFriends
-          this.chatingFriends.push(friend)
-        this.friend = friend
-
       setVueData: (data) ->
-        this.socketData = data
+        this.$store.commit('setWebSocketData', data)
 
     created: ->
       _self = this

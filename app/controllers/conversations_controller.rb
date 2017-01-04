@@ -14,7 +14,7 @@ class ConversationsController < ApplicationController
   def chat_with_friend_conversation
     user = User.find(params[:friend_id])
     @conversation = Conversation.between(current_user, user)
-    @user_messages = @conversation.user_messages.limit(50).order(id: :asc)
+    @user_messages = @conversation.user_messages.limit(50).order(id: :desc)
     respond_to do |format|
       format.json
     end
